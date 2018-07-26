@@ -21,15 +21,22 @@ public class CreateDAO {
 
         //use session obj to save java obj
         try {
-            //create student obj
+            //create DAO obj
+            Instructor theInstructor = new Instructor("Troy", "Song", "troysong33@gmail.com");
+            InstructorDetail theDetail = new InstructorDetail("youtube/troyCCA", "Car Enthusiast");
+
+            //associate the obj
+            theInstructor.setInstructorDetail(theDetail);
 
             //start transaction
             session.beginTransaction();
-            //save student obj
 
+            //save DAO obj
+            session.save(theInstructor); //will also save theDetail due to cascade.all
             //commit transaction
             session.getTransaction().commit();
             System.out.println("work done: DAO saved to db.");
+            System.out.println("DAO: \n" + theInstructor + "\n" + theDetail);
         }
         catch (Exception e) {
             e.printStackTrace();
