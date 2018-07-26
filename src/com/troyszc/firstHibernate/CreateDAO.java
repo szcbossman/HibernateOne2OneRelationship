@@ -1,18 +1,20 @@
 package com.troyszc.firstHibernate;
 
-import com.troyszc.firstHibernate.entity.Student;
+import com.troyszc.firstHibernate.entity.Instructor;
+import com.troyszc.firstHibernate.entity.InstructorDetail;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class CreateStudent {
+public class CreateDAO {
 
     public static void main (String[] args) {
 
         //create session factory
         SessionFactory factory = new Configuration()
                                 .configure("hibernate.cfg.xml")
-                                .addAnnotatedClass(Student.class)
+                                .addAnnotatedClass(Instructor.class)
+                                .addAnnotatedClass(InstructorDetail.class)
                                 .buildSessionFactory();
         //create session
         Session session = factory.getCurrentSession();
@@ -20,14 +22,14 @@ public class CreateStudent {
         //use session obj to save java obj
         try {
             //create student obj
-            Student theStudent = new Student("Troy", "Song", "troysong33@gmail.com");
+
             //start transaction
             session.beginTransaction();
             //save student obj
-            session.save(theStudent);
+
             //commit transaction
             session.getTransaction().commit();
-            System.out.println("work done: student saved to db.");
+            System.out.println("work done: DAO saved to db.");
         }
         catch (Exception e) {
             e.printStackTrace();
