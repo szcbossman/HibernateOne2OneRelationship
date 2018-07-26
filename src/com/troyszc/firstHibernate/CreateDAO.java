@@ -24,6 +24,8 @@ public class CreateDAO {
             //create DAO obj
             Instructor theInstructor = new Instructor("Troy", "Song", "troysong33@gmail.com");
             InstructorDetail theDetail = new InstructorDetail("youtube/troyCCA", "Car Enthusiast");
+            theInstructor = new Instructor("Miata", "Matsuda", "mx5MM@gmail.com");
+            theDetail = new InstructorDetail("youtube/straightpipes", "Car Enthusiast as well");
 
             //associate the obj
             theInstructor.setInstructorDetail(theDetail);
